@@ -8,7 +8,9 @@
 function task1() {
 	// поверніть константу з body
 	// ваш код тут
-	
+	const bodyElement = document.querySelector(`body`)
+	console.log(bodyElement)
+	return bodyElement;
 }
 
 
@@ -18,8 +20,22 @@ function task1() {
 
 function task2(count = 3) {
 	// ваш код тут
-	
+	const idElement = document.querySelector('#task2-output');
+	if (idElement) {
+		const listElement = document.createElement('ul');
+		for (let i = 1; i <= count; i++) {
+			const liElements = document.createElement('li');
+			liElements.textContent = `N`;
+			listElement.appendChild(liElements);
+		}
+		idElement.insertAdjacentElement("afterbegin", listElement);
+		console.log('правильно')
+	} else {
+		console.log('Не правильно')
+	}
 }
+task2();
+
 
 
 // Задача №3
@@ -28,8 +44,22 @@ function task2(count = 3) {
 
 function task3() {
 	// ваш код тут
-	
+	const bodyElement = document.querySelector(`body`);
+	if (bodyElement) {
+		bodyElement.className += `loaded`
+		bodyElement.style.color = `green`
+		if (`.loaded`) {
+			console.log('правильно')
+		} else {
+			console.log('Не правильно')
+		}
+	}
 }
+
+task3()
+
+
+
 
 
 // Задача №4
@@ -38,8 +68,19 @@ function task3() {
 
 function task4(root = document) {
 	// ваш код тут
-	
+	const itemElements = root.querySelectorAll(`.item`);
+	if (itemElements) {
+		itemElements.forEach((item, i) => {
+			item.classList.add(`active`);
+			item.textContent = `Елемент №${i + 1}`;
+		})
+		console.log('правильно')
+	} else {
+		console.log('Не правильно')
+	}
 }
+
+task4()
 
 
 // Задача №5
@@ -48,8 +89,25 @@ function task4(root = document) {
 
 function task5() {
 	// ваш код тут
-	
+	const someElement = document.querySelector(`.button`);
+	if (someElement) {
+		function scrollToButton(element) {
+			const block = element.dataset.scroll || "start"
+			element.scrollIntoView({
+				block: block,
+				inline: "nearest",
+				behavior: "smooth"
+			})
+		}
+		scrollToButton(someElement)
+		console.log('правильно')
+	} else {
+		console.log('Не правильно')
+	}
 }
+
+task5()
+
 
 
 // Задача №6
@@ -59,8 +117,18 @@ function task5() {
 
 function task6() {
 	// ваш код тут
-	
+	const someLink = document.querySelector(`.link`);
+	if (someLink) {
+		const value = parseFloat(someLink.dataset.value) || 100
+		someLink.dataset.value = value;
+		console.log(value);
+		if (value < 200) {
+			someLink.style.color = `red`
+		}
+	}
 }
+
+task6()
 
 
 // Не чіпати - потрібно і для тестів, і для браузера
